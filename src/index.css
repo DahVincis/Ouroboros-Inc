@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#F5F0EB] dark:bg-ob-black text-ob-black dark:text-ob-white antialiased transition-colors duration-300;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  ::selection {
+    @apply bg-cream text-ob-black;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ob-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-cream-dark;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-ob-white to-cream;
+  }
+
+  .section-label {
+    @apply text-xs font-mono tracking-[0.3em] uppercase text-cream;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold tracking-tight;
+  }
+
+  .card-hover {
+    @apply transition-all duration-500 ease-out;
+  }
+}
