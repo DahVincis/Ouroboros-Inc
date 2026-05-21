@@ -84,13 +84,11 @@ Once a project is deployed, update its `iframeUrl` in [src/data/projects.ts](src
 
 ## Image Assets
 
-Place these files in the `public/` directory (not tracked by git):
-
 ```text
 public/
-├── logo.png                  # Ouroboros logo
+├── logo.png                  # Ouroboros logo (transparent background)
 └── team-photos/
-    ├── kelvyn.jpg
+    ├── kelvyn.png
     └── pedro.jpg
 ```
 
