@@ -38,7 +38,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
         </TransitionChild>
 
         {/* Modal panel */}
-        <div className="fixed inset-0 flex items-center justify-center p-4 md:p-6">
+        <div className="fixed inset-0 flex items-center justify-center p-2 md:p-4">
           <TransitionChild
             as={Fragment}
             enter="ease-out duration-400"
@@ -49,7 +49,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             leaveTo="opacity-0 scale-95 translate-y-4"
             afterEnter={handleOpen}
           >
-            <DialogPanel className="w-full max-w-6xl bg-ob-dark border border-ob-border rounded-2xl overflow-hidden flex flex-col shadow-2xl">
+            <DialogPanel className="w-full max-w-7xl h-[95vh] bg-ob-dark border border-ob-border rounded-2xl overflow-hidden flex flex-col shadow-2xl">
               {/* Header */}
               <div className="flex items-center justify-between px-6 py-4 border-b border-ob-border flex-shrink-0">
                 <div className="flex items-center gap-4">
@@ -97,7 +97,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               </div>
 
               {/* Embed area */}
-              <div className="relative flex-1 min-h-0" style={{ height: '75vh' }}>
+              <div className="relative flex-1 min-h-0">
                 {embedUrl ? (
                   <>
                     {loading && (

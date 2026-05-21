@@ -18,11 +18,11 @@ export const team: TeamMember[] = [
     firstName: 'Kelvyn',
     role: 'Full-Stack Developer',
     bio: "Creative technologist with a sharp eye for design and usability. Kelvyn specializes in building modern, polished web experiences - from responsive PWAs to full-featured production apps - always focused on the end user.",
-    photo: '/team-photos/kelvyn.jpg',
+    photo: '/team-photos/kelvyn.png',
     links: {
       github: 'https://github.com/Kelvinluciano312',
       linkedin: 'https://www.linkedin.com/in/kelvyn-luciano/',
-      email: 'ouroboros2043@gmail.com',
+      email: 'kelvinluciano2@gmail.com',
     },
     skills: ['React', 'Next.js', 'TypeScript', 'AWS', 'UI/UX'],
   },
@@ -35,7 +35,7 @@ export const team: TeamMember[] = [
     links: {
       github: 'https://github.com/DahVincis',
       linkedin: 'https://www.linkedin.com/in/dahvincis/',
-      email: 'ouroboros2043@gmail.com',
+      email: 'ph.leao2099@gmail.com',
     },
     skills: ['React', 'TypeScript', 'Python', 'Node.js', 'AWS'],
   },

@@ -34,7 +34,7 @@ export default function Navbar() {
           <img
             src="/logo.png"
             alt="Ouroboros Inc."
-            className="h-8 w-8 object-contain group-hover:opacity-80 transition-opacity"
+            className="h-11 w-11 object-contain group-hover:opacity-80 transition-opacity"
           />
           <span className="text-sm font-semibold tracking-widest uppercase text-ob-black dark:text-ob-white">
             Ouroboros
