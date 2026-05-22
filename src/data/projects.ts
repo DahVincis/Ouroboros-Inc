@@ -52,7 +52,7 @@ export const projects: Project[] = [
       'A React-based showcase website for a specialty finishes company. Features smooth carousels, intersection observer-driven lazy loading, and a clean presentation of the full product catalog.',
     iframeUrl: '/demos/special-finishes/index.html',
     liveUrl: null,
-    screenshot: null,
+    screenshot: '/screenshots/special-finishes.png',
     youtubeId: null,
     tech: ['React', 'React Slick', 'CSS Animations'],
     type: 'web',
