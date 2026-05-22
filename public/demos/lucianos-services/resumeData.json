@@ -1,0 +1,107 @@
+{
+  "main": {
+    "name":"Luciano's Services",
+    "description":"We’re more than happy to offer you the best quality. Stay connected with us on social media to keep up with our latest updates!",
+    "image":"logoPro.png",
+    "bio":"Luciano's Services is dedicated to delivering the ideal product to the right customer. Founded nearly 15 years ago in New Haven, Connecticut, we now operate extensively in Texas (Austin and surrounding areas) and Connecticut (New Haven and Fairfield Counties). Our mission is to understand our clients' needs and provide the highest quality service possible.",
+    "contactmessage":"Feel Free to contact us:",
+    "email": "lucianosservices@gmail.com",
+    "phone": "203-526-4271",
+    "github":"https://www.linkedin.com/",
+    "project":"https://www.instagram.com/lucianoshomeimprovements/",
+    "address":{
+      "street":"1800 Plateau Vista Blvd",
+      "city":"Round Rock",
+      "state":"Texas",
+      "zip": "78664"
+    },
+    "website": "http://www.timbakerdev.com",
+    "resumedownload":"tel:2035264271",
+    "social":[
+      {
+        "name":"facebook",
+        "url":"https://www.facebook.com/lucianosflooris/",
+        "className":"fa fa-facebook"
+      },
+      {
+        "name":"linkedin",
+        "url":"https://www.linkedin.com/",
+        "className":"fa fa-linkedin"
+      },
+      {
+        "name":"instagram",
+        "url":"https://www.instagram.com/lucianoshomeimprovements/",
+        "className":"fa fa-instagram"
+      }
+    ]
+  },
+  "resume":{
+    "skillmessage":"At Luciano's Services we offer a wide range of home finishing services, including bathroom installations, custom carpentry, and interior finishing. With years of experience under our belt, we're dedicated to providing the highest level of service to meet your needs. Don't hesitate to contact us for any project—big or small. We're here to help turn your vision into reality.",
+    "education":[
+      {
+        "degree":"Premier Windows Installation Services",
+        "description":"Our team is committed deliver exceptional window installation services. Equipped with skilled professionals, we offer installation of a diverse range of window types, coupled with excellent customer service. Operating with maximum efficiency, we serve the Austin area in Texas and its surroundings, ensuring a seamless experience from start to finish."
+      }
+    ],
+    "work":[
+      {
+        "title":"Expert Flooring Services Available",
+        "description":"Our skilled team is equipped to handle flooring installations across both Texas and Connecticut. With years of experience in installing hardwood and vinyl floors, flooring services are a proud part of our legacy. We're committed to delivering quality and craftsmanship in every project."
+      }
+    ],
+    "skills":[
+    ]
+  },
+  "portfolio":{
+    "projects": [
+      {
+        "title":"Lead Preparation",
+        "category":"Lead Job",
+        "image":"Win1.jpg",
+        "url":""
+      },
+      {
+        "title":"Three Panels Installation",
+        "category":"",
+        "image":"Win2.jpg",
+        "url":""
+      },
+      {
+        "title":"Building Scaffolding",
+        "category":"",
+        "image":"Win3.jpg",
+        "url":""
+      },
+      {
+        "title":"Slide Door Installation",
+        "category":"",
+        "image":"Win4.jpg",
+        "url":""
+      },
+      {
+        "title":"Sanding Floors",
+        "category":"",
+        "image":"Flors1.jpg",
+        "url":""
+      },
+      {
+        "title":"Staining Floors",
+        "category":"",
+        "image":"Flors2.jpg",
+        "url":""
+      },
+      {
+        "title":"New Marble Floors",
+        "category":"",
+        "image":"Flors3.jpg",
+        "url":""
+      },
+      {
+        "title":"Buiding a Deck",
+        "category":"",
+        "image":"Flors.png",
+        "url":""
+      }
+    ]
+  }
+}

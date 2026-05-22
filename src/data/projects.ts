@@ -20,7 +20,7 @@ export const projects: Project[] = [
     description: 'Professional PWA for a services business with parallax scrolling, carousels, and Google Maps.',
     longDescription:
       'A fully responsive Progressive Web Application built for a local services company. Features parallax scrolling, image carousels, Google Maps integration, particle animations, and smooth scroll reveals.',
-    iframeUrl: 'https://941fd915.lucianos-services-web-app.pages.dev/',
+    iframeUrl: '/demos/lucianos-services/index.html',
     liveUrl: 'https://941fd915.lucianos-services-web-app.pages.dev/',
     screenshot: '/screenshots/lucianos-services.jpg',
     youtubeId: null,
@@ -50,7 +50,7 @@ export const projects: Project[] = [
     description: 'Showcase website for a specialty finishes company featuring interactive product carousels.',
     longDescription:
       'A React-based showcase website for a specialty finishes company. Features smooth carousels, intersection observer-driven lazy loading, and a clean presentation of the full product catalog.',
-    iframeUrl: null,
+    iframeUrl: '/demos/special-finishes/index.html',
     liveUrl: null,
     screenshot: null,
     youtubeId: null,
