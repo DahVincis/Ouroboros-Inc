@@ -4,6 +4,8 @@ export interface Project {
   description: string
   longDescription: string
   iframeUrl: string | null
+  liveUrl: string | null
+  screenshot: string | null
   youtubeId: string | null
   tech: string[]
   type: 'web' | 'desktop' | 'pwa'
@@ -19,6 +21,8 @@ export const projects: Project[] = [
     longDescription:
       'A fully responsive Progressive Web Application built for a local services company. Features parallax scrolling, image carousels, Google Maps integration, particle animations, and smooth scroll reveals.',
     iframeUrl: null,
+    liveUrl: 'https://941fd915.lucianos-services-web-app.pages.dev/',
+    screenshot: '/screenshots/lucianos-services.jpg',
     youtubeId: null,
     tech: ['React', 'PWA', 'Google Maps', 'AWS S3'],
     type: 'pwa',
@@ -32,6 +36,8 @@ export const projects: Project[] = [
     longDescription:
       'A modern financial dashboard built with React and TypeScript. Integrates Plaid for secure bank account linking and transaction tracking, with Clerk handling authentication and session management.',
     iframeUrl: null,
+    liveUrl: null,
+    screenshot: null,
     youtubeId: null,
     tech: ['React', 'TypeScript', 'Plaid', 'Clerk', 'Vite'],
     type: 'web',
@@ -45,6 +51,8 @@ export const projects: Project[] = [
     longDescription:
       'A React-based showcase website for a specialty finishes company. Features smooth carousels, intersection observer-driven lazy loading, and a clean presentation of the full product catalog.',
     iframeUrl: null,
+    liveUrl: null,
+    screenshot: null,
     youtubeId: null,
     tech: ['React', 'React Slick', 'CSS Animations'],
     type: 'web',
@@ -58,6 +66,8 @@ export const projects: Project[] = [
     longDescription:
       'A polished Next.js 14 business website for a makeup and hair studio. Includes Google Calendar API for booking, email notifications via Resend, and a curated service showcase with TypeScript and Tailwind CSS.',
     iframeUrl: null,
+    liveUrl: null,
+    screenshot: null,
     youtubeId: null,
     tech: ['Next.js', 'TypeScript', 'Tailwind', 'Resend', 'Google APIs'],
     type: 'web',
@@ -71,6 +81,8 @@ export const projects: Project[] = [
     longDescription:
       'A collaborative full-stack application built with Express.js and MySQL. Features Passport.js authentication, session management, Multer file uploads, Sharp image processing, and an admin control panel.',
     iframeUrl: null,
+    liveUrl: null,
+    screenshot: null,
     youtubeId: null,
     tech: ['Node.js', 'Express', 'MySQL', 'Passport.js', 'Multer'],
     type: 'web',
@@ -84,6 +96,8 @@ export const projects: Project[] = [
     longDescription:
       'A PyQt6 desktop application for controlling professional audio mixing consoles in real time. Features a full mixer GUI, parametric EQ, Real-Time Analyzer (RTA) visualization, pitch correction, and OSC protocol communication. Packaged as a standalone Windows executable.',
     iframeUrl: null,
+    liveUrl: null,
+    screenshot: null,
     youtubeId: 'NkdS8KENr0k',
     tech: ['Python', 'PyQt6', 'OSC Protocol', 'NumPy', 'PyInstaller'],
     type: 'desktop',

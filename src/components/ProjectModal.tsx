@@ -1,6 +1,6 @@
 import { Fragment, useState } from 'react'
 import { Dialog, DialogPanel, Transition, TransitionChild } from '@headlessui/react'
-import { X, Github, ExternalLink, Loader2 } from 'lucide-react'
+import { X, Github, ExternalLink, Loader2, ArrowUpRight } from 'lucide-react'
 import type { Project } from '../data/projects'
 
 interface ProjectModalProps {
@@ -10,16 +10,24 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const [loading, setLoading] = useState(true)
+  const [thumbError, setThumbError] = useState(false)
 
   const isOpen = project !== null
 
-  const handleOpen = () => setLoading(true)
+  const handleOpen = () => {
+    setLoading(true)
+    setThumbError(false)
+  }
 
   if (!project) return null
 
   const embedUrl = project.youtubeId
     ? `https://www.youtube.com/embed/${project.youtubeId}?autoplay=1&mute=1&rel=0&modestbranding=1`
     : project.iframeUrl
+
+  const externalUrl = project.liveUrl ?? project.iframeUrl ?? null
+
+  const thumbUrl = project.screenshot ?? null
 
   return (
     <Transition show={isOpen} as={Fragment}>
@@ -75,9 +83,9 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   >
                     <Github size={16} />
                   </a>
-                  {project.iframeUrl && (
+                  {externalUrl && (
                     <a
-                      href={project.iframeUrl}
+                      href={externalUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 rounded-lg text-ob-muted hover:text-ob-white hover:bg-white/10 transition-colors"
@@ -96,9 +104,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
               </div>
 
-              {/* Embed area */}
+              {/* Body */}
               <div className="relative flex-1 min-h-0">
                 {embedUrl ? (
+                  /* Embeddable iframe (YouTube or direct embed) */
                   <>
                     {loading && (
                       <div className="absolute inset-0 flex items-center justify-center bg-ob-dark z-10">
@@ -115,8 +124,51 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                       onLoad={() => setLoading(false)}
                     />
                   </>
+                ) : project.liveUrl ? (
+                  /* Live site — blocked from embedding, show screenshot preview */
+                  <div className="absolute inset-0 flex flex-col">
+                    {/* Screenshot */}
+                    <div className="relative flex-1 min-h-0 overflow-hidden">
+                      {!thumbError && thumbUrl ? (
+                        <>
+                          {loading && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-ob-dark z-10">
+                              <Loader2 size={32} className="text-cream animate-spin" />
+                            </div>
+                          )}
+                          <img
+                            src={thumbUrl}
+                            alt={`${project.name} screenshot`}
+                            className="w-full h-full object-cover object-top"
+                            onLoad={() => setLoading(false)}
+                            onError={() => { setThumbError(true); setLoading(false) }}
+                          />
+                        </>
+                      ) : (
+                        <div className={`w-full h-full bg-gradient-to-br ${project.gradient}`} />
+                      )}
+                      {/* Overlay blur at bottom */}
+                      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-ob-dark to-transparent" />
+                    </div>
+
+                    {/* CTA bar */}
+                    <div className="flex-shrink-0 flex flex-col items-center gap-4 px-8 py-8 bg-ob-dark border-t border-ob-border">
+                      <p className="text-sm text-ob-muted text-center max-w-lg leading-relaxed">
+                        {project.longDescription}
+                      </p>
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-sm font-semibold tracking-widest uppercase bg-cream text-ob-black hover:bg-cream/90 transition-colors rounded-full px-6 py-3"
+                      >
+                        Open Live Site
+                        <ArrowUpRight size={15} />
+                      </a>
+                    </div>
+                  </div>
                 ) : (
-                  /* Coming Soon state */
+                  /* Coming soon */
                   <div className="absolute inset-0 flex flex-col items-center justify-center gap-6 bg-ob-dark">
                     <div className={`w-20 h-20 rounded-2xl bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
                       <span className="text-3xl font-bold text-white">{project.name[0]}</span>
@@ -127,17 +179,15 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         {project.longDescription}
                       </p>
                     </div>
-                    <div className="flex gap-3">
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase bg-cream text-ob-black hover:bg-cream-light transition-colors rounded-full px-5 py-2.5"
-                      >
-                        <Github size={13} />
-                        View on GitHub
-                      </a>
-                    </div>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-xs font-semibold tracking-widest uppercase bg-cream text-ob-black hover:bg-cream/90 transition-colors rounded-full px-5 py-2.5"
+                    >
+                      <Github size={13} />
+                      View on GitHub
+                    </a>
                     <p className="text-xs text-ob-muted font-mono tracking-wider">
                       — Live demo coming soon —
                     </p>

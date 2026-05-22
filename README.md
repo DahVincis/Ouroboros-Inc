@@ -31,10 +31,13 @@ Single-page portfolio site showcasing 6 projects built across web, desktop, and 
 
 - Dark mode by default, toggleable with persistent preference
 - Project cards with hover-reveal animations (description, tech stack, CTA)
-- Modal iframe embeds for live project interaction
-- YouTube embed for AudioPilot desktop app demo
+- Project modal with three states:
+  - **Embeddable iframe** — direct in-page interaction for self-hosted demos
+  - **Live site preview** — screenshot thumbnail + "Open Live Site" button for sites that block embedding
+  - **Coming soon** — gradient placeholder + GitHub link for undeployed projects
+- YouTube embed for desktop app demos (AudioPilot)
 - Responsive layout (mobile, tablet, desktop)
-- Team bios with GitHub and LinkedIn links
+- Team bios with GitHub, LinkedIn, and email links
 - Smooth Framer Motion entrance animations throughout
 
 ## Getting Started
@@ -72,14 +75,26 @@ src/
 
 ## Adding Project Demos
 
-Once a project is deployed, update its `iframeUrl` in [src/data/projects.ts](src/data/projects.ts):
+Each project in [src/data/projects.ts](src/data/projects.ts) supports three demo modes:
+
+**Embeddable iframe** (site allows framing):
 
 ```ts
-{
-  id: 'project-id',
-  iframeUrl: 'https://your-deployed-url.com',  // add URL here
-  ...
-}
+{ iframeUrl: 'https://your-deployed-url.com', liveUrl: null, screenshot: null }
+```
+
+**Live site preview** (site blocks iframes — e.g. Cloudflare Pages default):
+
+```ts
+{ iframeUrl: null, liveUrl: 'https://your-deployed-url.com', screenshot: '/screenshots/project-id.jpg' }
+```
+
+Drop the screenshot at `public/screenshots/project-id.jpg`. If omitted, falls back to the gradient.
+
+**Coming soon** (not yet deployed):
+
+```ts
+{ iframeUrl: null, liveUrl: null, screenshot: null }
 ```
 
 ## Image Assets
