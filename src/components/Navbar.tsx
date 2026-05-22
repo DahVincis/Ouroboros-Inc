@@ -33,7 +33,7 @@ export default function Navbar() {
         <a href="#" className="flex items-center gap-3 group">
           <img
             src="/logo.png"
-            alt="Ouroboros Inc."
+            alt="Ouroboros Studios"
             className="h-11 w-11 object-contain group-hover:opacity-80 transition-opacity"
           />
           <span className="text-sm font-semibold tracking-widest uppercase text-ob-black dark:text-ob-white">

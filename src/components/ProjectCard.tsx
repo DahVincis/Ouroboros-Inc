@@ -32,18 +32,32 @@ export default function ProjectCard({ project, onClick, index }: ProjectCardProp
       className="group relative rounded-2xl overflow-hidden cursor-pointer aspect-[4/3]"
       onClick={onClick}
     >
-      {/* Gradient background */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} transition-transform duration-700 group-hover:scale-105`} />
+      {/* Background: screenshot or gradient */}
+      {project.screenshot ? (
+        <div
+          className="absolute inset-0 bg-cover bg-top transition-transform duration-700 group-hover:scale-105"
+          style={{ backgroundImage: `url(${project.screenshot})` }}
+        />
+      ) : (
+        <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} transition-transform duration-700 group-hover:scale-105`} />
+      )}
+
+      {/* Subtle dark overlay so text stays readable over screenshots */}
+      {project.screenshot && (
+        <div className="absolute inset-0 bg-black/30" />
+      )}
 
       {/* Grid overlay texture */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
-                            linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)`,
-          backgroundSize: '32px 32px',
-        }}
-      />
+      {!project.screenshot && (
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+            backgroundSize: '32px 32px',
+          }}
+        />
+      )}
 
       {/* Default state content */}
       <div className="absolute inset-0 p-6 flex flex-col justify-between transition-opacity duration-300 group-hover:opacity-0">

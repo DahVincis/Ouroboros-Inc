@@ -30,7 +30,7 @@ export default function About() {
             </h2>
             <div className="space-y-4 text-ob-muted leading-relaxed">
               <p>
-                Ouroboros Inc. is a software development studio founded by Pedro Fernandes and Kelvyn Luciano.
+                Ouroboros Studios is a software development studio founded by Pedro Fernandes and Kelvyn Luciano.
                 We build web applications, desktop tools, and digital products for businesses that demand quality
                 and reliability above all else.
               </p>

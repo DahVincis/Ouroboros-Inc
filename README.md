@@ -1,6 +1,6 @@
-# Ouroboros Inc
+# Ouroboros Studios
 
-> **Infinitely Reliable** - Portfolio website for Ouroboros Inc., a freelance software development studio by Pedro Henrique Fernandes and Kelvyn Luciano.
+> **Infinitely Reliable** - Portfolio website for Ouroboros Studios., a freelance software development studio by Pedro Henrique Fernandes and Kelvyn Luciano.
 
 ## Overview
 

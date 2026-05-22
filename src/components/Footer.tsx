@@ -40,9 +40,9 @@ export default function Footer() {
           {/* Brand */}
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <img src="/logo.png" alt="Ouroboros Inc." className="h-8 w-8 object-contain" />
+              <img src="/logo.png" alt="Ouroboros Studios" className="h-8 w-8 object-contain" />
               <span className="text-sm font-semibold tracking-widest uppercase text-ob-black dark:text-ob-white">
-                Ouroboros Inc.
+                Ouroboros Studios
               </span>
             </div>
             <p className="text-xs text-ob-muted font-mono tracking-[0.2em] uppercase">
@@ -102,7 +102,7 @@ export default function Footer() {
 
         <div className="mt-16 pt-6 border-t border-black/10 dark:border-ob-border flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-ob-muted">
-            © {new Date().getFullYear()} Ouroboros Inc. All rights reserved.
+            © {new Date().getFullYear()} Ouroboros Studios All rights reserved.
           </p>
           <p className="text-xs text-ob-muted font-mono">
             Built with React + Tailwind + Framer Motion

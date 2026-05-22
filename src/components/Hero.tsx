@@ -33,7 +33,7 @@ export default function Hero() {
         >
           <img
             src="/logo.png"
-            alt="Ouroboros Inc."
+            alt="Ouroboros Studios"
             className="w-36 h-36 md:w-48 md:h-48 object-contain drop-shadow-2xl"
           />
         </motion.div>
