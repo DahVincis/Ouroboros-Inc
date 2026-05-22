@@ -8,22 +8,27 @@ const navLinks = [
 
 const socials = [
   {
-    label: 'Pedro -GitHub',
+    label: 'Pedro - GitHub',
     href: 'https://github.com/DahVincis',
     icon: Github,
   },
   {
-    label: 'Kelvyn -GitHub',
+    label: 'Kelvyn - GitHub',
     href: 'https://github.com/Kelvinluciano312',
     icon: Github,
   },
   {
-    label: 'Pedro -LinkedIn',
+    label: 'Ouroboros Studios - LinkedIn',
+    href: 'https://www.linkedin.com/company/ouroboros-studios/',
+    icon: Linkedin,
+  },
+  {
+    label: 'Pedro - LinkedIn',
     href: 'https://www.linkedin.com/in/dahvincis/',
     icon: Linkedin,
   },
   {
-    label: 'Kelvyn -LinkedIn',
+    label: 'Kelvyn - LinkedIn',
     href: 'https://www.linkedin.com/in/kelvyn-luciano/',
     icon: Linkedin,
   },
