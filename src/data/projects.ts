@@ -65,7 +65,7 @@ export const projects: Project[] = [
     description: 'Next.js business site for a makeup and hair studio with Google Calendar booking and email integration.',
     longDescription:
       'A polished Next.js 14 business website for a makeup and hair studio. Includes Google Calendar API for booking, email notifications via Resend, and a curated service showcase with TypeScript and Tailwind CSS.',
-    iframeUrl: null,
+    iframeUrl: '/demos/stolochi/index.html',
     liveUrl: null,
     screenshot: null,
     youtubeId: null,

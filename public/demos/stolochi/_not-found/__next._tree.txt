@@ -1,0 +1,2 @@
+:HL["/demos/stolochi/_next/static/chunks/bcbd8d42bc12d673.css","style"]
+0:{"buildId":"cjMtT4TteOgsUE4fh8vBz","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"/_not-found","paramType":null,"paramKey":"/_not-found","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
