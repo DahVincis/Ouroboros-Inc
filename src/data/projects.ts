@@ -35,7 +35,7 @@ export const projects: Project[] = [
     description: 'Financial dashboard with Plaid integration for secure bank account linking and transaction management.',
     longDescription:
       'A modern financial dashboard built with React and TypeScript. Integrates Plaid for secure bank account linking and transaction tracking, with Clerk handling authentication and session management.',
-    iframeUrl: null,
+    iframeUrl: '/demos/tusky-app/index.html',
     liveUrl: null,
     screenshot: null,
     youtubeId: null,
