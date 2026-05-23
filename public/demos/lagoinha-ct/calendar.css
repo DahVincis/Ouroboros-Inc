@@ -1,44 +1,51 @@
-body{
-    background-color: #f1f1f1;
-  }
-/* Styles for the titlediv */
+/* ── Calendar page ── */
 .titlediv {
-    text-align: center;
+  text-align: center;
+  padding: 32px 24px 8px;
 }
 
-/* Styles for the calendardiv */
+.titlediv h1 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  color: #0f172a;
+}
+
 .calendardiv {
-    margin: 30px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 24px auto;
+  max-width: 900px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
 }
 
-/* Styles for the addcalendar button */
+.calendardiv iframe {
+  border-radius: 16px;
+}
+
+/* Add to calendar button */
 .addcalendar {
-    padding: 1.3em 3em;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 2.5px;
-    font-weight: 500;
-    color: #000;
-    background-color: #fff;
-    border: none;
-    border-radius: 45px;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease 0s;
-    cursor: pointer;
-    outline: none;
-    text-decoration: none;
+  display: inline-block;
+  margin: 16px auto;
+  padding: 12px 32px;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 600;
+  color: #0f172a;
+  background: #c9a227;
+  border: none;
+  border-radius: 40px;
+  box-shadow: 0 4px 16px rgba(201,162,39,0.35);
+  transition: all 0.25s;
+  cursor: pointer;
+  text-decoration: none;
 }
 
-/* Hover effect for the addcalendar button */
 .addcalendar:hover {
-    background-color: #000000;
-    box-shadow: 0px 15px 20px rgba(117, 118, 117, 0.4);
-    color: #fff;
-    transform: translateY(-7px);
+  background: #e4c05c;
+  box-shadow: 0 8px 24px rgba(201,162,39,0.45);
+  transform: translateY(-3px);
+  color: #0f172a;
 }
 
-/* Active state for the addcalendar button */
-.addcalendar:active {
-    transform: translateY(-1px);
-}
+.addcalendar:active { transform: translateY(-1px); }

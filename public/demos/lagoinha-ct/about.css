@@ -1,39 +1,28 @@
-body{
-  background-color: #f1f1f1;
-}
-/* Styles for the wrapper */
+/* ── About page ── */
 .wrapper {
-  margin-top: 30px;
-  width: 100%;
+  margin-top: 24px;
   overflow: hidden;
 }
 
-/* Styles for the photobanner container */
 .photobanner {
   position: relative;
-  height: 233px;
-  margin-bottom: 30px;
+  height: 200px;
+  margin-bottom: 32px;
   display: flex;
-  width: 100%;
-}
-
-/* Styles for the images inside the photobanner */
-.photobanner img {
-  margin: 0px 25px;
-  box-shadow: 2px 2px 8px #8a8a8a;
-}
-
-/* Animation for the photobanner */
-.photobanner {
+  gap: 16px;
   animation: bannermove 60s linear infinite alternate-reverse;
 }
 
-/* Keyframes for the banner movement animation */
+.photobanner img {
+  height: 200px;
+  width: auto;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  flex-shrink: 0;
+}
+
 @keyframes bannermove {
-  from {
-    left: 0px;
-  }
-  to {
-    left: -2700px;
-  }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-2700px); }
 }
