@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- This is the title of the website page for the tab. -->
+  <title>Calendar</title>
+
+  <!-- Favicon link -->
+  <link rel="icon" type="image/png" sizes="32x32" href="./logo.png">
+  
+  <!-- CSS files -->
+  <!-- Link to the stylesheet -->
+  <link rel="stylesheet" href="./calendar.css">
+
+  <!-- Link to the "Menu" stylesheet -->
+  <link rel="stylesheet" href="./lagoinha.css">
+
+  <!-- JavaScript files -->
+  <!-- Menu.js: Contains the logic for handling the side menu -->
+  <script src="./lagoinha-menu.js"></script>
+
+  <!-- Bootstrap files -->
+  <!-- Burger Button -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <!-- This is positioned on top of the container. -->
+  <div class="navbar-container">
+    <nav class="navbar navbar-expand-lg">
+      <button class="navbar-toggler" type="button" onclick="openNav()" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand navbar-brand-centered" href="lagoinha.html">
+        <img src="./logo.png" alt="Logo" height="50" style="clip-path: circle();">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <!-- <ul class="navbar-nav ms-auto"> for the items to be on the right -->
+          <li class="nav-item active">
+            <a class="nav-link text-white" href="lagoinha.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="groups.html">Groups</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="calendar.html">Calendar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="Media.html">Media</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white" href="admin.html">Admin</a>
+          </li>
+          <!-- Add more navigation items as needed -->
+        </ul>
+      </div>
+    </nav>
+  </div>
+  <!-- The side navigation bar. -->
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="lagoinha.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="groups.html">Groups</a>
+    <a href="calendar.html">Calendar</a>
+    <a href="Media.html">Media</a>
+    <a href="admin.html">Admin </a>
+  </div>
+
+  <div class="titlediv">
+    <br>
+    <h1>Lagoinha Calendar</h1>
+    <p>Connect our calendar to your Google calendar and stay updated on the events and news in our church. Don’t miss
+      out, we have many surprises for you. Come and experience Lagoinha.</p>
+    <br>
+    <a class="addcalendar"
+      href="https://calendar.google.com/calendar/u/0/r?cid=lagoinhaconnecticut@gmail.com"> Add to Google
+      Calendar</a>
+    <br>
+    <br>
+    <div class="calendardiv">
+      <iframe
+        src="https://calendar.google.com/calendar/embed?height=720&wkst=1&bgcolor=%233c3c3c&ctz=America%2FNew_York&showTitle=0&showTz=0&showPrint=0&showCalendars=0&showDate=1&hl=en&src=bGFnb2luaGFjb25uZWN0aWN1dEBnbWFpbC5jb20&color=%23039BE5"
+        style="border-width:0" width="100%" height="550px" frameborder="0" scrolling="no"></iframe>
+    </div>
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+body{
+    background-color: #f1f1f1;
+  }
+/* Styles for the titlediv */
+.titlediv {
+    text-align: center;
+}
+
+/* Styles for the calendardiv */
+.calendardiv {
+    margin: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for the addcalendar button */
+.addcalendar {
+    padding: 1.3em 3em;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+}
+
+/* Hover effect for the addcalendar button */
+.addcalendar:hover {
+    background-color: #000000;
+    box-shadow: 0px 15px 20px rgba(117, 118, 117, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+}
+
+/* Active state for the addcalendar button */
+.addcalendar:active {
+    transform: translateY(-1px);
+}

@@ -1,0 +1,329 @@
+/* ---------------------------------------- */
+/* CSS Reset */
+/* ---------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------------------------------------- */
+/* Divider Class Styles */
+/* ---------------------------------------- */
+.container {
+    width: 100%;
+    height: 80%;
+    margin: auto;
+    padding: 20px;
+    background-color: transparent;
+}
+
+.navbar-container {
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 12px;
+    background-color: #212121;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.inner-container {
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+}
+
+.section {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: transparent;
+    text-align: center;
+    color: #000000;
+}
+
+/* ---------------------------------------- */
+/* Global Styles */
+/* ---------------------------------------- */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000000;
+    background-color: #fff;
+    /*background-image: linear-gradient(rgba(7, 7, 7, 0.6),
+            rgba(7, 7, 7, 0.6)),
+        url("#"); */
+    background-size: 100%;
+    background-repeat: repeat;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: black; /* Black*/
+    opacity: 95%;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the 
+sidenav */
+    background-image: url('sideBar.png');
+    background-size: 250px; /* Adjust as needed */
+  }
+
+
+
+
+  
+
+  /* The navigation menu links */
+.sidenav a {
+    padding: 8px 8px 8px 100px;
+    text-decoration: none;
+    font-size: 35px;
+    color: white;
+    -webkit-text-stroke: 1px black;
+    display: block;
+    transition: 0.3s;
+  }
+
+
+  /* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+  }
+
+
+  /* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+.navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+  /* Style page content - use this if you want to push the page content to 
+the right when you open the side navigation */
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+  }
+  
+  /* On smaller screens, where height is less than 450px, change the style 
+of the sidenav (less padding and a smaller font size) */
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+
+.sec2{
+    text-align: left;
+    padding-left: 20px;
+}
+
+.hamburger-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 50px;
+    padding: 15px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.logo {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    color:#007bff
+}
+
+
+
+/* ---------------------------------------- */
+/* Header Styles */
+/* ---------------------------------------- */
+header {
+    background-color: transparent;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+
+nav ul {
+    list-style: none;
+    display: none;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+nav ul li a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.navbar {
+    background-color: #212121;
+}
+
+/* ---------------------------------------- */
+/* Main Styles */
+/* ---------------------------------------- */
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section p {
+    text-align: center;
+}
+
+
+section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+
+/* ---------------------------------------- */
+/* Slideshow Styles */
+/* ---------------------------------------- */
+
+.slideshow-fade {
+    animation: fading 10s infinite
+    
+}
+
+.slideshow-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -25%);
+    color: white;
+    
+}
+
+.mySlides {
+    height: 100%;
+
+
+}
+
+
+.slideshow-text h1 {
+    font-size: 4vw;
+    font-family: Helvetica, sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    color: #c9c9c9;
+
+}
+
+@keyframes fading {
+    0% {
+        opacity: 0
+    }
+
+    50% {
+        opacity: 1
+    }
+
+    100% {
+        opacity: 0
+    }
+}
+
+/* ---------------------------------------- */
+/* Content Styles */
+/* ---------------------------------------- */
+
+.display-container {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.display-container img {
+    filter: brightness(50%);
+}
+
+/* ---------------------------------------- */
+/* Footer Styles */
+/* ---------------------------------------- */
+footer {
+    background-color: transparent;
+    padding: 20px;
+    text-align: center;
+}
+
+
+.menu {
+    display: none;
+}
+  
+.menu.show {
+    display: block;
+}
+
+
+.display-container2 {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.display-container2 img {
+    filter: brightness(80%);
+}

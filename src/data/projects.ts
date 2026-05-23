@@ -80,7 +80,7 @@ export const projects: Project[] = [
     description: 'Full-stack app with user auth, file uploads, image processing, and MySQL-backed data management.',
     longDescription:
       'A collaborative full-stack application built with Express.js and MySQL. Features Passport.js authentication, session management, Multer file uploads, Sharp image processing, and an admin control panel.',
-    iframeUrl: null,
+    iframeUrl: '/demos/lagoinha-ct/index.html',
     liveUrl: null,
     screenshot: null,
     youtubeId: null,

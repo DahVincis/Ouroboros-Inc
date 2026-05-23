@@ -1,0 +1,496 @@
+body{
+    background-color: #f1f1f1;
+  }
+/* Text*/
+.Text{
+    text-align: center;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
+/* Head description*/
+.l-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 30px;
+  width: 100%;
+  max-width: 100%;
+  padding: 30px;
+  
+  @media screen and (max-width: 760px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*----------------------------------- Card Aloha ------------------------------------ */
+.b-game-card__cover{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+}
+/* Card */
+.b-game-aloha{
+    background-image: url(/Aloha.jpg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* Card when hover*/
+.b-game-aloha:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-1%);
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(-.9deg);
+    transition: transform .35s ease-in-out;
+    transform: rotateX(10deg);
+}
+/* Card Text*/
+.text-aloha{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 243, 238, 0.7);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+
+    text-align: center;
+    font-size: 100%;
+}
+.b-game-aloha:hover .text-aloha{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------- Card Geracao Eleita -----------------------------------------*/
+.b-game-eleita{
+    background-image: url(/Geracaoeleita.jpg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* Card when hover */
+.b-game-eleita:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-1%);
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(-.9deg);
+    transition: transform .35s ease-in-out;
+    transform: rotateX(10deg);
+}
+/* Card text */
+.text-eleita{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 243, 238, 0.7);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+
+    text-align: center;
+    font-size: 85%;
+}
+.b-game-eleita:hover .text-eleita{
+    display: block;
+}
+
+
+
+
+/* --------------------------- Card Legacy Casais -----------------------------------------*/
+.b-game-casais{
+    background-image: url(/LegacyCasais.jpg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* Card when hover*/
+.b-game-casais:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-1%);
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(-.9deg);
+    transition: transform .35s ease-in-out;
+    transform: rotateX(10deg);
+
+}
+/* Card text*/
+.text-casais{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 243, 238, 0.7);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+
+    text-align: center;
+    font-size: 95%;
+}
+.b-game-casais:hover .text-casais{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+/* --------------------------- Card Desperta -----------------------------------------*/
+.b-game-desperta{
+    background-image: url(/desperta.jpg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* Card when hover*/ 
+.b-game-desperta:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-1%);
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(-.9deg);
+    transition: transform .35s ease-in-out;
+    transform: rotateX(10deg);
+
+}
+/* Card text*/
+.text-desperta{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 243, 238, 0.7);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+
+    text-align: center;
+    font-size: 95%;
+}
+.b-game-desperta:hover .text-desperta{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+/* --------------------------- Card The Way -----------------------------------------*/
+.b-game-theway{
+    background-image: url(/theway.jpg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* Card when hover*/
+.b-game-theway:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-1%);
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(-.9deg);
+    transition: transform .35s ease-in-out;
+    transform: rotateX(10deg);
+
+}
+/* Card text*/
+.text-theway{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 243, 238, 0.7);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+
+    text-align: center;
+    font-size: 95%;
+}
+.b-game-theway:hover .text-theway{
+    display: block;
+}
+
+
+
+
+
+
+
+/* --------------------------- Card Metanoia -----------------------------------------*/
+.b-game-metanoia{
+    background-image: url(/metanoia.jpeg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* Card when hover*/
+.b-game-metanoia:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-1%);
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(-.9deg);
+    transition: transform .35s ease-in-out;
+    transform: rotateX(10deg);
+
+}
+/* Card text*/
+.text-metanoia{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 243, 238, 0.7);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+
+    text-align: center;
+    font-size: 95%;
+}
+.b-game-metanoia:hover .text-metanoia{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------- Card Papo de Graca -----------------------------------------*/
+.b-game-papo{
+    background-image: url(/papo.jpeg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* Card when hover*/
+.b-game-papo:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-1%);
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(-.9deg);
+    transition: transform .35s ease-in-out;
+    transform: rotateX(10deg);
+
+}
+/* Card text*/
+.text-papo{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 243, 238, 0.7);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+
+    text-align: center;
+    font-size: 95%;
+}
+.b-game-papo:hover .text-papo{
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* --------------------------- Card Rocket -----------------------------------------*/
+.b-game-rocket{
+    background-image: url(/rocket.jpeg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* Card when hover*/
+.b-game-rocket:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-1%);
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(-.9deg);
+    transition: transform .35s ease-in-out;
+    transform: rotateX(10deg);
+
+}
+/* Card text*/
+.text-rocket{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 243, 238, 0.7);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+
+    text-align: center;
+    font-size: 95%;
+}
+.b-game-rocket:hover .text-rocket{
+    display: block;
+}
+
+
+
+
+
+
+
+
+/* ---------------------------Card Zoe-----------------------------------------*/
+.b-game-zoe{
+    background-image: url(/Zooe.jpeg);
+    position: relative;
+    width: 100%;
+    padding-bottom: 150%;
+    perspective: 1000px;
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+/* Card Zoe when hover*/
+.b-game-zoe:hover{
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-1%);
+    transform-style: preserve-3d;
+    transform-origin: top center;
+    will-change: transform;
+    transform: skewX(-.9deg);
+    transition: transform .35s ease-in-out;
+    transform: rotateX(10deg);
+
+}
+/* Card Zoe Text*/
+.text-zoe{
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(228, 243, 238, 0.7);
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: rgb(0, 0, 0);
+
+    text-align: center;
+    font-size: 95%;
+}
+.b-game-zoe:hover .text-zoe{
+    display: block;
+}

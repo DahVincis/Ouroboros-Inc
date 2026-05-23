@@ -1,0 +1,39 @@
+body{
+  background-color: #f1f1f1;
+}
+/* Styles for the wrapper */
+.wrapper {
+  margin-top: 30px;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Styles for the photobanner container */
+.photobanner {
+  position: relative;
+  height: 233px;
+  margin-bottom: 30px;
+  display: flex;
+  width: 100%;
+}
+
+/* Styles for the images inside the photobanner */
+.photobanner img {
+  margin: 0px 25px;
+  box-shadow: 2px 2px 8px #8a8a8a;
+}
+
+/* Animation for the photobanner */
+.photobanner {
+  animation: bannermove 60s linear infinite alternate-reverse;
+}
+
+/* Keyframes for the banner movement animation */
+@keyframes bannermove {
+  from {
+    left: 0px;
+  }
+  to {
+    left: -2700px;
+  }
+}
