@@ -32,8 +32,17 @@ export default function ProjectCard({ project, onClick, index }: ProjectCardProp
       className="group relative rounded-2xl overflow-hidden cursor-pointer aspect-[4/3]"
       onClick={onClick}
     >
-      {/* Background: screenshot or gradient */}
-      {project.screenshot ? (
+      {/* Background: logo, screenshot, or gradient */}
+      {project.cardLogo ? (
+        <>
+          {/* Gradient base layer fills letterbox gaps around contained logo */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
+          <div
+            className="absolute inset-0 bg-contain bg-no-repeat bg-center transition-transform duration-700 group-hover:scale-105"
+            style={{ backgroundImage: `url(${project.cardLogo})` }}
+          />
+        </>
+      ) : project.screenshot ? (
         <>
           {/* Gradient base layer — fills letterbox gaps for bg-contain desktop cards */}
           {project.type === 'desktop' && (
@@ -49,12 +58,12 @@ export default function ProjectCard({ project, onClick, index }: ProjectCardProp
       )}
 
       {/* Subtle dark overlay so text stays readable over screenshots */}
-      {project.screenshot && (
+      {(project.cardLogo || project.screenshot) && (
         <div className="absolute inset-0 bg-black/30" />
       )}
 
       {/* Grid overlay texture */}
-      {!project.screenshot && (
+      {!project.cardLogo && !project.screenshot && (
         <div
           className="absolute inset-0 opacity-10"
           style={{

@@ -6,6 +6,7 @@ export interface Project {
   iframeUrl: string | null
   liveUrl: string | null
   screenshot: string | null
+  cardLogo?: string
   youtubeId: string | null
   tech: string[]
   type: 'web' | 'desktop' | 'pwa'
@@ -23,6 +24,7 @@ export const projects: Project[] = [
     iframeUrl: '/demos/lucianos-services/index.html',
     liveUrl: 'https://941fd915.lucianos-services-web-app.pages.dev/',
     screenshot: '/screenshots/lucianos-services.jpg',
+    cardLogo: '/demos/lucianos-services/images/logoPro.png',
     youtubeId: null,
     tech: ['React', 'PWA', 'Google Maps', 'AWS S3'],
     type: 'pwa',
@@ -38,6 +40,7 @@ export const projects: Project[] = [
     iframeUrl: '/demos/tusky-app/index.html',
     liveUrl: null,
     screenshot: '/screenshots/tusky.png',
+    cardLogo: '/demos/tusky-app/assets/Logo-CMgotVWG.svg',
     youtubeId: null,
     tech: ['React', 'TypeScript', 'Plaid', 'Clerk', 'Vite'],
     type: 'web',
@@ -83,6 +86,7 @@ export const projects: Project[] = [
     iframeUrl: '/demos/lagoinha-ct/index.html',
     liveUrl: null,
     screenshot: '/screenshots/lagoinha.png',
+    cardLogo: '/demos/lagoinha-ct/logo.png',
     youtubeId: null,
     tech: ['Node.js', 'Express', 'MySQL', 'Passport.js', 'Multer'],
     type: 'web',
