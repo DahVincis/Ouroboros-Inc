@@ -11,12 +11,14 @@ interface ProjectModalProps {
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const [loading, setLoading] = useState(true)
   const [thumbError, setThumbError] = useState(false)
+  const [tuskyStarted, setTuskyStarted] = useState(false)
 
   const isOpen = project !== null
 
   const handleOpen = () => {
     setLoading(true)
     setThumbError(false)
+    setTuskyStarted(false)
   }
 
   if (!project) return null
@@ -106,7 +108,62 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
               {/* Body */}
               <div className="relative flex-1 min-h-0">
-                {embedUrl ? (
+                {project.id === 'tusky-app' ? (
+                  /* Phone-frame experience for Tusky */
+                  <div className="absolute inset-0 flex items-center justify-center bg-ob-dark">
+                    <div className="relative w-[288px] h-[624px] bg-[#1c1c1e] rounded-[44px] border-[5px] border-[#2c2c2e] ring-1 ring-white/5 shadow-[0_30px_80px_rgba(0,0,0,0.85)] flex flex-col overflow-hidden">
+                      {/* Dynamic island */}
+                      <div className="flex-shrink-0 h-10 bg-[#1c1c1e] flex items-center justify-center">
+                        <div className="w-[100px] h-[30px] bg-black rounded-[20px]" />
+                      </div>
+                      {/* Screen */}
+                      <div className="flex-1 relative overflow-hidden bg-black">
+                        {!tuskyStarted ? (
+                          <div className="absolute inset-0 bg-gradient-to-br from-[#0D1B2A] via-[#1B3A4B] to-[#1A4A5A] flex flex-col items-center justify-center gap-5 p-6">
+                            <img
+                              src="/demos/tusky-app/assets/Logo-CMgotVWG.svg"
+                              className="w-16 h-16 drop-shadow-lg"
+                              alt="Tusky logo"
+                            />
+                            <div className="text-center">
+                              <h3 className="text-white text-lg font-bold tracking-wide">Tusky</h3>
+                              <p className="text-blue-300/60 text-xs mt-1">Financial Dashboard</p>
+                            </div>
+                            <button
+                              onClick={() => { setTuskyStarted(true); setLoading(true) }}
+                              className="mt-2 bg-blue-500 hover:bg-blue-400 active:scale-95 text-white text-sm font-semibold px-8 py-2.5 rounded-2xl transition-all duration-150 shadow-lg"
+                            >
+                              Start Test
+                            </button>
+                          </div>
+                        ) : (
+                          <>
+                            {loading && (
+                              <div className="absolute inset-0 flex items-center justify-center bg-[#0D1B2A] z-10">
+                                <Loader2 size={24} className="text-blue-400 animate-spin" />
+                              </div>
+                            )}
+                            {/* Render at 390px (mobile viewport) then scale down to fill 278px screen */}
+                            <div style={{ width: 390, height: 760, transform: 'scale(0.7128)', transformOrigin: 'top left', position: 'absolute', top: 0, left: 0 }}>
+                              <iframe
+                                key="tusky-phone"
+                                src={embedUrl ?? ''}
+                                title={project.name}
+                                style={{ width: 390, height: 760, border: 'none', display: 'block' }}
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media"
+                                onLoad={() => setLoading(false)}
+                              />
+                            </div>
+                          </>
+                        )}
+                      </div>
+                      {/* Home indicator */}
+                      <div className="flex-shrink-0 h-8 bg-[#1c1c1e] flex items-center justify-center">
+                        <div className="w-[100px] h-[4px] bg-[#555] rounded-full" />
+                      </div>
+                    </div>
+                  </div>
+                ) : embedUrl ? (
                   /* Embeddable iframe (YouTube or direct embed) */
                   <>
                     {loading && (

@@ -34,10 +34,16 @@ export default function ProjectCard({ project, onClick, index }: ProjectCardProp
     >
       {/* Background: screenshot or gradient */}
       {project.screenshot ? (
-        <div
-          className="absolute inset-0 bg-cover bg-top transition-transform duration-700 group-hover:scale-105"
-          style={{ backgroundImage: `url(${project.screenshot})` }}
-        />
+        <>
+          {/* Gradient base layer — fills letterbox gaps for bg-contain desktop cards */}
+          {project.type === 'desktop' && (
+            <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
+          )}
+          <div
+            className={`absolute inset-0 transition-transform duration-700 group-hover:scale-105 ${project.type === 'desktop' ? 'bg-contain bg-no-repeat bg-center' : 'bg-cover bg-top'}`}
+            style={{ backgroundImage: `url(${project.screenshot})` }}
+          />
+        </>
       ) : (
         <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} transition-transform duration-700 group-hover:scale-105`} />
       )}

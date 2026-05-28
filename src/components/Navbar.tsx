@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Moon, Sun, Menu, X } from 'lucide-react'
 import { useTheme } from '../context/ThemeContext'
 
@@ -11,23 +11,10 @@ const navLinks = [
 
 export default function Navbar() {
   const { theme, toggleTheme } = useTheme()
-  const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    window.addEventListener('scroll', onScroll)
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-[#F5F0EB]/90 dark:bg-ob-black/90 backdrop-blur-md border-b border-black/10 dark:border-ob-border'
-          : 'bg-transparent'
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#F5F0EB] dark:bg-ob-black border-b border-black/10 dark:border-ob-border">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
         {/* Logo */}
         <a href="#" className="flex items-center gap-3 group">
