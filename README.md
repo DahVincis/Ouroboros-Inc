@@ -14,7 +14,7 @@ Single-page portfolio site showcasing 6 projects built across web, desktop, and 
 - **Animations:** Framer Motion
 - **Modals:** Headless UI
 - **Icons:** Lucide React
-- **Hosting:** AWS S3 + CloudFront + Route 53 (planned)
+- **Hosting:** AWS S3 (private) + CloudFront + Route 53 — domain `studiosouroboros.com`
 
 ## Projects Showcased
 
@@ -112,9 +112,14 @@ public/
 ```bash
 npm run build     # outputs to dist/
 npm run preview   # preview production build locally
+npm run deploy    # build → sync dist/ to S3 → invalidate CloudFront
 ```
 
-Deploy `dist/` to an AWS S3 bucket with static website hosting, then serve via CloudFront.
+The site is hosted on AWS: a **private** S3 bucket fronted by **CloudFront** (Origin Access
+Control), with an **ACM** TLS certificate and **Route 53** DNS for `studiosouroboros.com`.
+`npm run deploy` requires the AWS CLI configured with credentials that can write to the bucket
+and create CloudFront invalidations. Infrastructure IDs and the deploy gotcha (no blanket SPA
+rewrite — it would shadow the `public/demos/*` bundles) are documented in [CLAUDE.md](CLAUDE.md).
 
 ## Team
 
