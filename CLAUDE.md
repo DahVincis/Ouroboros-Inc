@@ -65,30 +65,37 @@ npm run build     # tsc -b && vite build  → dist/
 npm run preview   # serve the production build locally
 ```
 
-## Deployment — AWS (in progress)
+## Deployment — AWS (live)
 
-Target architecture (all in one AWS account):
+Architecture (all in AWS account **160928621948** / "Ouroboros Studios", region `us-east-1`):
 
 ```
-Route 53 (domain + hosted zone)
+Route 53 hosted zone (studiosouroboros.com)
   └─ A/AAAA alias → CloudFront distribution
                       ├─ ACM cert (us-east-1, DNS-validated)
                       └─ Origin Access Control → private S3 bucket (holds dist/)
 ```
 
-- S3 bucket is **private** with Block Public Access ON; access is via CloudFront OAC, **not**
-  S3 website-hosting mode.
-- ACM certificate **must** be in `us-east-1` for CloudFront.
-- Domain is being **registered via Route 53** (none owned yet as of this writing).
-- Upload with `aws s3 sync dist/ s3://<bucket> --delete`, then invalidate CloudFront.
+**Live resource IDs:**
+
+| Resource | Value |
+|---|---|
+| S3 bucket | `ouroboros-studios-site-160928621948` (private, Block Public Access ON) |
+| CloudFront distribution | `E35O2GS84W5OKJ` → `d292op38ldzx86.cloudfront.net` |
+| Origin Access Control | `E1JZQ8BKPDZE4I` |
+| ACM certificate (us-east-1) | `arn:aws:acm:us-east-1:160928621948:certificate/1ad62d20-010b-49cf-9768-6401593d7200` (apex + www) |
+| Route 53 hosted zone | `Z10088092LDNH6H48SZ6K` (studiosouroboros.com) |
+
+Domain `studiosouroboros.com` is **registered at GoDaddy** with nameservers delegated to the
+Route 53 hosted zone above. ACM cert **must** stay in `us-east-1` for CloudFront.
+
+**Deploy:** `npm run deploy` — builds, `aws s3 sync dist/ s3://…  --delete`, then a CloudFront
+`/*` invalidation. Requires the AWS CLI configured (profile `ouroboros-deploy`).
 
 **⚠️ Deploy gotcha:** Do NOT add a blanket SPA rewrite (403/404 → `/index.html` for everything)
 on CloudFront. This site has no client-side router, and a catch-all rewrite would shadow the
 static `public/demos/<id>/index.html` bundles. Use targeted error handling only, and verify
 `/demos/*` subpaths still load after any CloudFront error-page config.
-
-> A `npm run deploy` script (build → s3 sync → CloudFront invalidation) will be added once the
-> bucket/distribution exist; document its exact bucket + distribution ID here when created.
 
 ## Team / contact
 
