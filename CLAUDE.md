@@ -97,6 +97,17 @@ on CloudFront. This site has no client-side router, and a catch-all rewrite woul
 static `public/demos/<id>/index.html` bundles. Use targeted error handling only, and verify
 `/demos/*` subpaths still load after any CloudFront error-page config.
 
+## Security notes
+
+- **No secrets in the repo.** `.env` / `.env.*.local` are gitignored; there are no committed
+  credential, key, or `.pem` files. The bundled `public/demos/*` are static production builds and
+  contain **no live API keys** (the Tusky/Plaid/Clerk demo is a mock UI).
+- **AWS credentials live outside the repo** in `~/.aws/credentials` (profile `ouroboros-deploy`).
+  Never paste access keys into source, commits, or chat. The IDs recorded in this file
+  (bucket name, distribution ID, hosted zone ID, cert ARN, account ID) are **not** secrets.
+- If a project demo ever needs a client-side key, scope/restrict it (HTTP referrer or domain
+  allowlist) before bundling, since everything under `public/` is publicly served.
+
 ## Team / contact
 
 - **Pedro Henrique Fernandes** — Full-Stack Dev — GitHub `DahVincis`, ph.leao2099@gmail.com
