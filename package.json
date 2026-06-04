@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "npm run build && aws s3 sync dist/ s3://ouroboros-studios-site-160928621948 --delete && aws cloudfront create-invalidation --distribution-id E35O2GS84W5OKJ --paths \"/*\""
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
