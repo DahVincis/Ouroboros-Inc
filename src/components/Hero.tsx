@@ -49,7 +49,7 @@ export default function Hero() {
             OUROBOROS
           </h1>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-[-0.03em] text-cream leading-none">
-            INC.
+            STUDIOS
           </h1>
         </motion.div>
 
