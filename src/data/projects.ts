@@ -65,14 +65,14 @@ export const projects: Project[] = [
   {
     id: 'stolochi',
     name: 'Stolochi - Makeup & Hair',
-    description: 'Next.js business site for a makeup and hair studio with Google Calendar booking and email integration.',
+    description: 'Live bridal beauty site on Cloudflare Workers, with page content driven straight from a Google Sheet the owner edits.',
     longDescription:
-      'A polished Next.js 14 business website for a makeup and hair studio. Includes Google Calendar API for booking, email notifications via Resend, and a curated service showcase with TypeScript and Tailwind CSS.',
-    iframeUrl: '/demos/stolochi/index.html',
+      'A bridal hair and makeup site for a studio in Durham, NC. Services, testimonials, and gallery are read from a Google Sheet on every request, so the owner updates the live site by editing a spreadsheet — no rebuild, no redeploy, and no CMS to learn. The contact form delivers inquiries by email through Resend, guarded by input validation, a bot honeypot, and per-IP rate limiting. Server-rendered on Cloudflare Workers via OpenNext.',
+    iframeUrl: 'https://stolochi-site.ph-leao2099.workers.dev',
     liveUrl: null,
     screenshot: '/screenshots/stolochi.png',
     youtubeId: null,
-    tech: ['Next.js', 'TypeScript', 'Tailwind', 'Resend', 'Google APIs'],
+    tech: ['Next.js', 'TypeScript', 'Tailwind', 'Cloudflare Workers', 'Resend'],
     type: 'web',
     github: 'https://github.com/DahVincis/Stolochi_MakeupAndHair',
     gradient: 'from-[#1A0010] via-[#3D0028] to-[#5C003C]',

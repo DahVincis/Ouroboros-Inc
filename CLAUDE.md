@@ -46,8 +46,10 @@ public/
 
 Each project chooses one **demo mode** via three fields:
 
-- **Embeddable iframe:** `iframeUrl` set (usually `/demos/<id>/index.html`), `liveUrl` null,
-  `screenshot` null.
+- **Embeddable iframe:** `iframeUrl` set, `liveUrl` null. Either a self-hosted bundle
+  (`/demos/<id>/index.html`) or an absolute URL to a live site that permits framing —
+  Stolochi points at its live Worker, so it never goes stale. `screenshot` is still used as the
+  card background.
 - **Live-site preview:** `iframeUrl` null, `liveUrl` set, `screenshot` set (for sites that block
   framing — shows thumbnail + "Open Live Site").
 - **Coming soon:** all three null (gradient placeholder + GitHub link).
@@ -120,6 +122,12 @@ curl --resolve studiosouroboros.com:443:104.21.9.188 -sI https://studiosouroboro
 `public/demos/<id>/` holds a **static production build of another repo**, copied in by hand. It
 does not update itself — when the source project ships, this snapshot goes stale (the Special
 Finishes bundle sat on a pre-rebuild build for months, still carrying `react-slick` fonts).
+
+**If the project is deployed somewhere that allows framing, point `iframeUrl` at the live URL
+instead and delete the bundle** — that removes this whole staleness problem for that card.
+Stolochi was converted this way on 2026-08-23 (its 2 MB bundle was a static export whose
+content was frozen at build time; the live site reads its content from a Google Sheet per
+request). The tradeoff is that the card now depends on that deployment being up.
 
 To refresh one, e.g. Special Finishes (source: `../Project-Special`):
 
