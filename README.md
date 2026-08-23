@@ -23,7 +23,7 @@ Single-page portfolio site showcasing 6 projects built across web, desktop, and 
 | Luciano's Services | PWA | React, Google Maps, AWS |
 | Tusky App | Web App | React, TypeScript, Plaid, Clerk |
 | Special Finishes | Web App | React, Supabase, Cloudflare Workers |
-| Stolochi - Makeup & Hair | Web App | Next.js, TypeScript, Tailwind, Resend |
+| Stolochi - Makeup & Hair | Web App | Next.js, TypeScript, Tailwind, Cloudflare Workers, Resend |
 | LagoinhaCT | Full-Stack | Node.js, Express, MySQL, Passport.js |
 | AudioPilot | Desktop | Python, PyQt6, OSC Protocol |
 
@@ -100,6 +100,10 @@ Drop the screenshot at `public/screenshots/project-id.jpg`. If omitted, falls ba
 Demo bundles under `public/demos/<id>/` are static production builds copied in from each
 project's own repo — they do not update themselves. See [CLAUDE.md](CLAUDE.md) for how to
 refresh one, including stripping the source site's analytics tag from the copy.
+
+Where a project is deployed somewhere that permits framing, `iframeUrl` can point at the live
+URL instead and the bundle dropped entirely — the card then never goes stale, at the cost of
+depending on that deployment being up. Stolochi works this way.
 
 ## Image Assets
 
