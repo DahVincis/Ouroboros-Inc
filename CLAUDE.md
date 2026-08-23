@@ -94,41 +94,26 @@ breaches either limit. It is chained explicitly after `build` rather than wired 
 `predeploy` hook, because npm would run a `predeploy` hook *before* the build and check a
 stale `dist/`.
 
-### Migration from AWS — completed 2026-08-23
+### Hosting facts
 
-`studiosouroboros.com` and `www` are Workers Custom Domains on `ouroboros-portfolio`; zone
-`f240bc13b46a6305e5df64cd72804f48` on account `48fe1b5d081768ff30ff3cc05f1b3122`,
-nameservers `elliot`/`reza.ns.cloudflare.com`. Verified live: all five `/demos/<id>/` paths
-200, `www` 200, `/nope` 404, root HTML byte-identical to the previous CloudFront response.
-Cloudflare also serves `/demos/<id>/` directly (200) where CloudFront returned 403 — it could
-only index-resolve at the root, so demos had to be linked as `/demos/<id>/index.html`.
+Cloudflare zone `f240bc13b46a6305e5df64cd72804f48` on account
+`48fe1b5d081768ff30ff3cc05f1b3122`, nameservers `elliot`/`reza.ns.cloudflare.com`.
+`studiosouroboros.com` and `www` are Workers Custom Domains on `ouroboros-portfolio`.
+Registrar is Cloudflare (expires 2028-06-03); their registrar lock is on by default and must
+be cleared before any future transfer. None of these IDs are secrets.
 
-**AWS is empty.** Route 53 zone, S3 bucket, CloudFront distribution, ACM cert, and the
-Origin Access Control were all deleted the same day; recurring AWS cost is $0.00. There is no
-AWS rollback path any more — a revert means redeploying somewhere new.
-
-**Only loose end:** IAM user `ouroboros-deploy` still exists (that user cannot enumerate or
-modify itself — `iam:ListUsers` is denied). Its access keys sit in `~/.aws/credentials` and
-have never been committed to this repo — history was scanned for key IDs, credential
-keywords, and `.env`/`.pem` files, all clean. With the AWS account empty they grant nothing
-useful, but valid keys can still *create* billable resources, so delete the user from the
-IAM console when convenient.
-
-**Registrar:** Cloudflare, Inc. as of 2026-08-23 (transferred from GoDaddy). Expires
-2028-06-03 — the transfer added a year. Cloudflare's registrar lock
-(`clientTransferProhibited`) is on by default; it must be cleared before any future transfer.
+The site was on AWS S3+CloudFront until 2026-08-23; all of that is deleted and the account is
+empty. See `git log` for the migration if you need the history.
 
 **Debugging note:** `dig` from the dev machine is unreliable — something local (VPN?)
 intercepts port 53 and answers non-authoritatively (`ra` set, no `aa`, decrementing TTL). It
-reported stale CloudFront IPs for hours after cutover. Check records over DNS-over-HTTPS
-instead, and test the site by pinning the edge IP:
+reported stale IPs for hours after the DNS cutover and nearly caused a wrong diagnosis. Check
+records over DNS-over-HTTPS instead, and test the site by pinning the edge IP:
 
 ```bash
 curl -s -H 'accept: application/dns-json' 'https://dns.google/resolve?name=studiosouroboros.com&type=A'
 curl --resolve studiosouroboros.com:443:104.21.9.188 -sI https://studiosouroboros.com/
 ```
-
-Delete this section once the IAM keys are gone.
 
 ## Refreshing a project demo
 
@@ -172,11 +157,10 @@ this.** The real fix belongs in the source repo; until then, redo it after any r
 - **Deploy auth is per-developer OAuth** (`wrangler login`), not a shared static credential.
   Nothing to paste, nothing to rotate. For CI, use a scoped Cloudflare API token in repository
   secrets — never a committed token.
-- **⚠️ Stale AWS credentials.** All AWS resources for this site were deleted 2026-08-23, but
-  IAM user `ouroboros-deploy` still exists and its access keys still sit in
-  `~/.aws/credentials`. They grant nothing useful now, but they are live credentials for
-  account `160928621948` — delete the user or rotate the keys from the console. Never paste
-  access keys into source, commits, or chat.
+- **No AWS involvement any more.** The account's resources and the `ouroboros-deploy` IAM
+  user were deleted 2026-08-23; the stale keys in `~/.aws/credentials` are dead. No AWS
+  credentials have ever been committed here — history was scanned for key IDs, credential
+  keywords, and `.env`/`.pem` files.
 - If a project demo ever needs a client-side key, scope/restrict it (HTTP referrer or domain
   allowlist) before bundling, since everything under `public/` is publicly served.
 
