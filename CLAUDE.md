@@ -107,14 +107,16 @@ only index-resolve at the root, so demos had to be linked as `/demos/<id>/index.
 Origin Access Control were all deleted the same day; recurring AWS cost is $0.00. There is no
 AWS rollback path any more — a revert means redeploying somewhere new.
 
-**Still open:** IAM user `ouroboros-deploy` was not deleted (that user cannot enumerate or
-modify itself — `iam:ListUsers` is denied). Its access keys still sit in `~/.aws/credentials`
-and no longer grant anything useful, but they are live credentials and should be deleted or
-rotated from the console.
+**Only loose end:** IAM user `ouroboros-deploy` still exists (that user cannot enumerate or
+modify itself — `iam:ListUsers` is denied). Its access keys sit in `~/.aws/credentials` and
+have never been committed to this repo — history was scanned for key IDs, credential
+keywords, and `.env`/`.pem` files, all clean. With the AWS account empty they grant nothing
+useful, but valid keys can still *create* billable resources, so delete the user from the
+IAM console when convenient.
 
-**Registrar:** transfer from GoDaddy to Cloudflare Registrar was initiated 2026-08-23 and was
-`pending transfer` at the time of writing; it auto-completes within 5 days. Domain registered
-2026-06-03, expires 2027-06-03 (the transfer adds a year).
+**Registrar:** Cloudflare, Inc. as of 2026-08-23 (transferred from GoDaddy). Expires
+2028-06-03 — the transfer added a year. Cloudflare's registrar lock
+(`clientTransferProhibited`) is on by default; it must be cleared before any future transfer.
 
 **Debugging note:** `dig` from the dev machine is unreliable — something local (VPN?)
 intercepts port 53 and answers non-authoritatively (`ra` set, no `aa`, decrementing TTL). It
@@ -126,7 +128,7 @@ curl -s -H 'accept: application/dns-json' 'https://dns.google/resolve?name=studi
 curl --resolve studiosouroboros.com:443:104.21.9.188 -sI https://studiosouroboros.com/
 ```
 
-Delete this section once the registrar transfer lands and the IAM keys are gone.
+Delete this section once the IAM keys are gone.
 
 ## Refreshing a project demo
 
