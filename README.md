@@ -97,6 +97,10 @@ Drop the screenshot at `public/screenshots/project-id.jpg`. If omitted, falls ba
 { iframeUrl: null, liveUrl: null, screenshot: null }
 ```
 
+Demo bundles under `public/demos/<id>/` are static production builds copied in from each
+project's own repo — they do not update themselves. See [CLAUDE.md](CLAUDE.md) for how to
+refresh one, including stripping the source site's analytics tag from the copy.
+
 ## Image Assets
 
 ```text
