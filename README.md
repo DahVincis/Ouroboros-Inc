@@ -14,7 +14,7 @@ Single-page portfolio site showcasing 6 projects built across web, desktop, and 
 - **Animations:** Framer Motion
 - **Modals:** Headless UI
 - **Icons:** Lucide React
-- **Hosting:** AWS S3 (private) + CloudFront + Route 53 — domain `studiosouroboros.com`
+- **Hosting:** Cloudflare Workers (static assets) — domain `studiosouroboros.com`
 
 ## Projects Showcased
 
@@ -114,16 +114,22 @@ public/
 ## Build & Deploy
 
 ```bash
-npm run build     # outputs to dist/
-npm run preview   # preview production build locally
-npm run deploy    # build → sync dist/ to S3 → invalidate CloudFront
+npm run build         # outputs to dist/
+npm run preview       # preview production build locally
+npm run check:assets  # fail if any asset breaches Cloudflare's 25 MiB / 20k file limits
+npm run deploy        # build → check assets → wrangler deploy
 ```
 
-The site is hosted on AWS: a **private** S3 bucket fronted by **CloudFront** (Origin Access
-Control), with an **ACM** TLS certificate and **Route 53** DNS for `studiosouroboros.com`.
-`npm run deploy` requires the AWS CLI configured with credentials that can write to the bucket
-and create CloudFront invalidations. Infrastructure IDs and the deploy gotcha (no blanket SPA
-rewrite — it would shadow the `public/demos/*` bundles) are documented in [CLAUDE.md](CLAUDE.md).
+The site deploys to **Cloudflare Workers** as an assets-only Worker (no Worker script, no
+bindings) — see [wrangler.jsonc](wrangler.jsonc). Run `wrangler login` once; auth is
+per-developer OAuth rather than a shared credential, and deploys are versioned so
+`wrangler rollback` undoes a bad one.
+
+Two things to know before changing routing or refreshing a demo bundle, both documented in
+[CLAUDE.md](CLAUDE.md): `not_found_handling` must stay at its default `"none"` (setting
+`"single-page-application"` would shadow the `public/demos/*` bundles), and Cloudflare rejects
+any single static asset over **25 MiB** — which `npm run check:assets` catches at deploy time
+instead of upload time.
 
 ## Team
 

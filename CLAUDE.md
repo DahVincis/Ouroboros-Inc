@@ -65,40 +65,68 @@ npm run build     # tsc -b && vite build  → dist/
 npm run preview   # serve the production build locally
 ```
 
-## Deployment — AWS (live)
+## Deployment — Cloudflare Workers
 
-Architecture (all in AWS account **160928621948** / "Ouroboros Studios", region `us-east-1`):
+The site is an assets-only Worker: no Worker script, no bindings, `dist/` uploaded as static
+assets. Config is `wrangler.jsonc`, all four meaningful lines of it.
 
+**Deploy:** `npm run deploy` — builds, runs the asset guardrail, then `wrangler deploy`.
+Requires `wrangler login` once per developer (OAuth, per-person — no shared static
+credential). Deploys are atomic and versioned, so a bad deploy rolls back with
+`wrangler rollback` instead of a re-sync plus a cache invalidation.
+
+**⚠️ Deploy gotcha:** Do NOT set `not_found_handling: "single-page-application"` in
+`wrangler.jsonc`. This site has **no client-side router** — every URL is a real file on disk —
+and that setting returns `index.html` with a 200 for every unmatched path, which would shadow
+the static `public/demos/<id>/index.html` bundles. The default (`"none"`, a real 404) is
+correct and is deliberately left unset. This is the same trap as a blanket 403/404 → `/index.html`
+rewrite on a CDN; it survived the move off CloudFront, so it is still worth guarding.
+Regression test: after any routing change, confirm a bogus path like `/nope` returns 404 and
+**not** the portfolio homepage, and that all five `/demos/<id>/` subpaths still load.
+
+`html_handling` is likewise left at its default (`"auto-trailing-slash"`), which already
+resolves `/demos/<id>/` to that directory's `index.html`.
+
+**Asset limits (the reason for the guardrail):** Cloudflare caps static assets at **25 MiB per
+file** on every plan — free and paid alike; the plan split is on file *count* (20,000 free vs
+100,000 paid), not size. `npm run check:assets` walks `dist/` and fails the deploy if anything
+breaches either limit. It is chained explicitly after `build` rather than wired as a
+`predeploy` hook, because npm would run a `predeploy` hook *before* the build and check a
+stale `dist/`.
+
+### Migration from AWS — completed 2026-08-23
+
+`studiosouroboros.com` and `www` are Workers Custom Domains on `ouroboros-portfolio`; zone
+`f240bc13b46a6305e5df64cd72804f48` on account `48fe1b5d081768ff30ff3cc05f1b3122`,
+nameservers `elliot`/`reza.ns.cloudflare.com`. Verified live: all five `/demos/<id>/` paths
+200, `www` 200, `/nope` 404, root HTML byte-identical to the previous CloudFront response.
+Cloudflare also serves `/demos/<id>/` directly (200) where CloudFront returned 403 — it could
+only index-resolve at the root, so demos had to be linked as `/demos/<id>/index.html`.
+
+**AWS is empty.** Route 53 zone, S3 bucket, CloudFront distribution, ACM cert, and the
+Origin Access Control were all deleted the same day; recurring AWS cost is $0.00. There is no
+AWS rollback path any more — a revert means redeploying somewhere new.
+
+**Still open:** IAM user `ouroboros-deploy` was not deleted (that user cannot enumerate or
+modify itself — `iam:ListUsers` is denied). Its access keys still sit in `~/.aws/credentials`
+and no longer grant anything useful, but they are live credentials and should be deleted or
+rotated from the console.
+
+**Registrar:** transfer from GoDaddy to Cloudflare Registrar was initiated 2026-08-23 and was
+`pending transfer` at the time of writing; it auto-completes within 5 days. Domain registered
+2026-06-03, expires 2027-06-03 (the transfer adds a year).
+
+**Debugging note:** `dig` from the dev machine is unreliable — something local (VPN?)
+intercepts port 53 and answers non-authoritatively (`ra` set, no `aa`, decrementing TTL). It
+reported stale CloudFront IPs for hours after cutover. Check records over DNS-over-HTTPS
+instead, and test the site by pinning the edge IP:
+
+```bash
+curl -s -H 'accept: application/dns-json' 'https://dns.google/resolve?name=studiosouroboros.com&type=A'
+curl --resolve studiosouroboros.com:443:104.21.9.188 -sI https://studiosouroboros.com/
 ```
-Route 53 hosted zone (studiosouroboros.com)
-  └─ A/AAAA alias → CloudFront distribution
-                      ├─ ACM cert (us-east-1, DNS-validated)
-                      └─ Origin Access Control → private S3 bucket (holds dist/)
-```
 
-**Live resource IDs:**
-
-| Resource | Value |
-|---|---|
-| S3 bucket | `ouroboros-studios-site-160928621948` (private, Block Public Access ON) |
-| CloudFront distribution | `E35O2GS84W5OKJ` → `d292op38ldzx86.cloudfront.net` |
-| Origin Access Control | `E1JZQ8BKPDZE4I` |
-| ACM certificate (us-east-1) | `arn:aws:acm:us-east-1:160928621948:certificate/1ad62d20-010b-49cf-9768-6401593d7200` (apex + www) |
-| Route 53 hosted zone | `Z10088092LDNH6H48SZ6K` (studiosouroboros.com) |
-
-Domain `studiosouroboros.com` is **registered at GoDaddy** with nameservers delegated to the
-Route 53 hosted zone above. ACM cert **must** stay in `us-east-1` for CloudFront.
-
-**Deploy:** `npm run deploy` — builds, `aws s3 sync dist/ s3://…  --delete`, then a CloudFront
-`/*` invalidation. Requires AWS CLI v2 configured with credentials for the IAM user
-`ouroboros-deploy` (currently the default profile — `aws sts get-caller-identity` should return
-`arn:aws:iam::160928621948:user/ouroboros-deploy`). Note `--delete`: anything in the bucket that
-is not in `dist/` is removed, so never hand-upload files to the bucket.
-
-**⚠️ Deploy gotcha:** Do NOT add a blanket SPA rewrite (403/404 → `/index.html` for everything)
-on CloudFront. This site has no client-side router, and a catch-all rewrite would shadow the
-static `public/demos/<id>/index.html` bundles. Use targeted error handling only, and verify
-`/demos/*` subpaths still load after any CloudFront error-page config.
+Delete this section once the registrar transfer lands and the IAM keys are gone.
 
 ## Refreshing a project demo
 
@@ -124,15 +152,29 @@ Then, before deploying:
   `"homepage": "."` in its `package.json`; Vite needs `base: './'`.
 - Re-check the project's `tech`, `description`, and `longDescription` in `src/data/projects.ts` —
   a rebuild usually means the stack blurb is out of date too.
+- **Check image sizes.** Cloudflare refuses any static asset over 25 MiB, so an oversized image
+  in a refreshed bundle breaks the deploy. Run `npm run check:assets` after copying.
+
+**⚠️ The `lagoinha-ct` bundle carries hand-optimized images.** Its slideshow photos were
+6000×4000 PNGs (34 MB, 26 MB, 25 MB) — three of them over Cloudflare's 25 MiB ceiling. They
+were resized to 1920px WebP (~350 KB for all three), ~44 MB of unreferenced assets were
+deleted, and `slideshow2.JPG` was renamed to `slideshow2.jpg` to fix a reference that had been
+404ing on the case-sensitive origin. **Re-copying the upstream bundle silently reverts all of
+this.** The real fix belongs in the source repo; until then, redo it after any refresh.
 
 ## Security notes
 
 - **No secrets in the repo.** `.env` / `.env.*.local` are gitignored; there are no committed
   credential, key, or `.pem` files. The bundled `public/demos/*` are static production builds and
   contain **no live API keys** (the Tusky/Plaid/Clerk demo is a mock UI).
-- **AWS credentials live outside the repo** in `~/.aws/credentials` (IAM user `ouroboros-deploy`).
-  Never paste access keys into source, commits, or chat. The IDs recorded in this file
-  (bucket name, distribution ID, hosted zone ID, cert ARN, account ID) are **not** secrets.
+- **Deploy auth is per-developer OAuth** (`wrangler login`), not a shared static credential.
+  Nothing to paste, nothing to rotate. For CI, use a scoped Cloudflare API token in repository
+  secrets — never a committed token.
+- **⚠️ Stale AWS credentials.** All AWS resources for this site were deleted 2026-08-23, but
+  IAM user `ouroboros-deploy` still exists and its access keys still sit in
+  `~/.aws/credentials`. They grant nothing useful now, but they are live credentials for
+  account `160928621948` — delete the user or rotate the keys from the console. Never paste
+  access keys into source, commits, or chat.
 - If a project demo ever needs a client-side key, scope/restrict it (HTTP referrer or domain
   allowlist) before bundling, since everything under `public/` is publicly served.
 

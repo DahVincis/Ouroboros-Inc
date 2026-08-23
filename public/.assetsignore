@@ -1,0 +1,8 @@
+# Demo bundles under demos/ are copied in from other repos and sometimes carry
+# their own host config. Only a ROOT-level _headers/_redirects is interpreted by
+# Workers, so a nested one would just be served as a public file. Drop them.
+#
+# Caveat: this pattern is recursive, so if this site ever needs its own
+# root-level dist/_headers, add a "!_headers" negation below or it gets dropped too.
+**/_headers
+**/_redirects

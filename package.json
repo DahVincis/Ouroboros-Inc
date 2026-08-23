@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && aws s3 sync dist/ s3://ouroboros-studios-site-160928621948 --delete && aws cloudfront create-invalidation --distribution-id E35O2GS84W5OKJ --paths \"/*\""
+    "deploy": "npm run build && npm run check:assets && wrangler deploy",
+    "check:assets": "node scripts/check-assets.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
@@ -24,6 +25,7 @@
     "postcss": "^8.4.40",
     "tailwindcss": "^3.4.15",
     "typescript": "~5.6.0",
-    "vite": "^5.4.0"
+    "vite": "^5.4.0",
+    "wrangler": "^4.125.0"
   }
 }

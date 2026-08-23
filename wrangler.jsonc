@@ -1,0 +1,14 @@
+{
+  "name": "ouroboros-portfolio",
+  "compatibility_date": "2026-08-23",
+  "assets": {
+    "directory": "./dist"
+    // No not_found_handling: the default "none" returns a real 404.
+    // Do NOT set "single-page-application" — this site has no client-side
+    // router, and a catch-all rewrite would shadow the demos/<id>/index.html
+    // bundles. Same gotcha as a blanket SPA rewrite on CloudFront.
+    //
+    // No html_handling either: the default "auto-trailing-slash" already
+    // resolves /demos/<id>/ to that directory's index.html.
+  }
+}
