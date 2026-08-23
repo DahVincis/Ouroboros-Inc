@@ -50,14 +50,14 @@ export const projects: Project[] = [
   {
     id: 'project-special',
     name: 'Special Finishes',
-    description: 'Showcase website for a specialty finishes company featuring interactive product carousels.',
+    description: 'Editorial showcase site for a specialty finishes contractor, with a project gallery and multi-channel contact.',
     longDescription:
-      'A React-based showcase website for a specialty finishes company. Features smooth carousels, intersection observer-driven lazy loading, and a clean presentation of the full product catalog.',
+      'A React showcase site for a Connecticut specialty finishing company. Editorial layout with a CSS grid gallery and accessible lightbox, portfolio photography served from Supabase Storage, and a contact form that opens email, WhatsApp, or SMS while backing every lead up to the database. Deployed on Cloudflare Workers.',
     iframeUrl: '/demos/special-finishes/index.html',
-    liveUrl: null,
+    liveUrl: 'https://specialfinisheshi.com',
     screenshot: '/screenshots/special-finishes.png',
     youtubeId: null,
-    tech: ['React', 'React Slick', 'CSS Animations'],
+    tech: ['React', 'Supabase', 'Cloudflare Workers', 'CSS Grid'],
     type: 'web',
     github: 'https://github.com/DahVincis/Project-Special',
     gradient: 'from-[#1A0A00] via-[#3D1F00] to-[#5C3300]',

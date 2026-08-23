@@ -22,7 +22,7 @@ Single-page portfolio site showcasing 6 projects built across web, desktop, and 
 | --- | --- | --- |
 | Luciano's Services | PWA | React, Google Maps, AWS |
 | Tusky App | Web App | React, TypeScript, Plaid, Clerk |
-| Special Finishes | Web App | React, React Slick |
+| Special Finishes | Web App | React, Supabase, Cloudflare Workers |
 | Stolochi - Makeup & Hair | Web App | Next.js, TypeScript, Tailwind, Resend |
 | LagoinhaCT | Full-Stack | Node.js, Express, MySQL, Passport.js |
 | AudioPilot | Desktop | Python, PyQt6, OSC Protocol |
