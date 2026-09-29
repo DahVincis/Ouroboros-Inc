@@ -39,7 +39,9 @@ public/
 ├── logo.png
 ├── demos/<id>/             # Self-hosted static builds of each project (served as-is)
 ├── screenshots/<id>.(png|jpg)
-└── team-photos/(pedro.jpg|kelvyn.png)
+├── team-photos/(pedro.jpg|kelvyn.png)
+└── tusky/                  # Tusky app legal pages. The app and its Play listing link
+                            #   /tusky/privacy and /tusky/delete-account: never rename them.
 ```
 
 ## The projects data model (`src/data/projects.ts`)
