@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Email confirmed · Tusky</title>
+  <link rel="stylesheet" href="/tusky/style.css">
+</head>
+<body>
+<main>
+  <!-- Where Tusky's email links land. A good link shows "ok"; a link that has
+       expired or was already used arrives with an error in the URL. -->
+  <div id="ok">
+    <h1>Email confirmed</h1>
+    <p class="meta">Tusky, by <a href="https://studiosouroboros.com/">Ouroboros Studios</a></p>
+    <p>Your email address is confirmed. Go back to the Tusky app and sign in.</p>
+    <p>You can close this page.</p>
+  </div>
+
+  <div id="failed" hidden>
+    <h1>This link didn't work</h1>
+    <p class="meta">Tusky, by <a href="https://studiosouroboros.com/">Ouroboros Studios</a></p>
+    <p>The link has expired or was already used.</p>
+    <p>If you already confirmed your email, open the Tusky app and sign in. If not, sign up again
+    in the app to get a new link.</p>
+  </div>
+
+  <footer><a href="/tusky/">Tusky</a> · <a href="/tusky/privacy">Privacy policy</a> ·
+    <a href="mailto:ouroboros2043@gmail.com">Contact</a></footer>
+</main>
+<script>
+  // The address carries the reason, either after "#" or after "?".
+  if (/[#?&]error(_code)?=/.test(location.hash + location.search)) {
+    document.getElementById('ok').hidden = true;
+    document.getElementById('failed').hidden = false;
+  }
+</script>
+</body>
+</html>
