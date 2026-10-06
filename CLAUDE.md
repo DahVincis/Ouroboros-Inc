@@ -42,6 +42,8 @@ public/
 ├── team-photos/(pedro.jpg|kelvyn.png)
 └── tusky/                  # Tusky app legal pages. The app and its Play listing link
                             #   /tusky/privacy and /tusky/delete-account: never rename them.
+                            #   /tusky/confirmed is where Tusky's email links land (the Site URL
+                            #   of both Supabase projects): never rename it either.
 ```
 
 ## The projects data model (`src/data/projects.ts`)
