@@ -26,6 +26,9 @@
       and settle-up payments.</li>
     <li><strong>Your plan:</strong> which plan you have, its status and expiry date. Payment details
       stay with Google Play or the App Store; we never see your card.</li>
+    <li><strong>Connection records:</strong> when you connect a bank, or a connection or sync
+      fails, we keep Plaid's reference numbers, the bank's identifier and the error, so we can
+      troubleshoot with Plaid. They hold no balances or transactions.</li>
   </ul>
 
   <h2>How we use it</h2>
@@ -72,7 +75,8 @@
 
   <h2>How long we keep it</h2>
   <p>We keep your data while you have an account. When you disconnect a bank, you choose whether to
-  keep its history or delete it. When you delete your account, everything is deleted.</p>
+  keep its history or delete it. Connection records are kept for up to 90 days, even after you
+  delete a bank. When you delete your account, everything is deleted, connection records included.</p>
 
   <h2>Deleting your account</h2>
   <p>In the app: <strong>Settings → Account &amp; privacy → Delete my account</strong>. This disconnects every bank at Plaid
