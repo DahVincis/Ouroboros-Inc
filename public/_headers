@@ -1,0 +1,5 @@
+# The association file has no extension, so Workers would send
+# application/octet-stream. Apple requires application/json and a 200
+# with no redirect on this exact path.
+/.well-known/apple-app-site-association
+  Content-Type: application/json
