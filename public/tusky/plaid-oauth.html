@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Returning you to Tusky…</title>
+  <link rel="stylesheet" href="/tusky/style.css">
+</head>
+<body>
+<main>
+  <!-- Plaid OAuth redirect target. iOS opens the app via the universal link
+       when the association file matches; this page is the fallback. -->
+  <h1>Returning you to Tusky…</h1>
+  <p class="meta">Tusky, by <a href="https://studiosouroboros.com/">Ouroboros Studios</a></p>
+  <p>Your bank sign-in is done. If Tusky did not open, use the link below.</p>
+  <p><a id="open" href="tusky://plaid-oauth">Open the Tusky app</a></p>
+  <footer><a href="/tusky/">Tusky</a> · <a href="/tusky/support">Support</a></footer>
+</main>
+<script>
+  // Keep Plaid's query string (oauth_state_id) on the app's URL scheme.
+  var open = document.getElementById('open');
+  open.href = 'tusky://plaid-oauth' + location.search + location.hash;
+</script>
+</body>
+</html>

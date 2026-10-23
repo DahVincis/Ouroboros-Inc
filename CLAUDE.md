@@ -40,10 +40,16 @@ public/
 ├── demos/<id>/             # Self-hosted static builds of each project (served as-is)
 ├── screenshots/<id>.(png|jpg)
 ├── team-photos/(pedro.jpg|kelvyn.png)
+├── _headers                # Content-Type for the extensionless Apple association file
+├── .well-known/apple-app-site-association
+│                           # iOS universal links for Tusky. No extension, no redirect,
+│                           # Content-Type application/json. Never rename or move it.
 └── tusky/                  # Tusky app legal pages. The app and its Play listing link
                             #   /tusky/privacy and /tusky/delete-account: never rename them.
                             #   /tusky/confirmed is where Tusky's email links land (the Site URL
                             #   of both Supabase projects): never rename it either.
+                            #   /tusky/plaid-oauth is the Plaid OAuth redirect (universal link):
+                            #   never rename it. /tusky/support is linked from /tusky/.
 ```
 
 ## The projects data model (`src/data/projects.ts`)
@@ -88,7 +94,10 @@ the static `public/demos/<id>/index.html` bundles. The default (`"none"`, a real
 correct and is deliberately left unset. This is the same trap as a blanket 403/404 → `/index.html`
 rewrite on a CDN; it survived the move off CloudFront, so it is still worth guarding.
 Regression test: after any routing change, confirm a bogus path like `/nope` returns 404 and
-**not** the portfolio homepage, and that all five `/demos/<id>/` subpaths still load.
+**not** the portfolio homepage, and that all five `/demos/<id>/` subpaths still load. Also
+confirm `/.well-known/apple-app-site-association` returns 200 with `Content-Type: application/json`
+and no redirect (`curl -sI` must not show a `Location` header). `public/_headers` sets that
+type because the file has no extension; Workers would otherwise send `application/octet-stream`.
 
 `html_handling` is likewise left at its default (`"auto-trailing-slash"`), which already
 resolves `/demos/<id>/` to that directory's `index.html`.
