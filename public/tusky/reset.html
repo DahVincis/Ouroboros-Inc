@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <!-- The address carries a one-time reset token: never send it on as a Referer. -->
+  <meta name="referrer" content="no-referrer">
+  <title>Reset your password · Tusky</title>
+  <link rel="stylesheet" href="/tusky/style.css">
+</head>
+<body>
+<main>
+  <!-- Where Tusky's reset-password email button lands
+       (/tusky/reset?token_hash=…&type=recovery). Gmail strips tusky:// links, so the
+       email links here and this page hands the token to the app.
+       This page must NEVER call Supabase (verify or anything else): verifying here
+       would consume the one-time token before the app can use it. It only copies the
+       token into the app link, after checking it is made of safe characters.
+       On iOS (and Android once assetlinks.json is live) this path is also a universal
+       link / App Link, so the app usually opens directly and this page is the fallback. -->
+  <div id="ok" hidden>
+    <img class="logo" src="/tusky/logo.png" alt="" width="72" height="72">
+    <h1>Reset your password</h1>
+    <p class="meta">Tusky, by <a href="https://studiosouroboros.com/">Ouroboros Studios</a></p>
+    <p>Open Tusky on this phone to choose a new password.</p>
+    <p><a id="open" class="button" href="tusky://reset-password">Open Tusky to reset your password</a></p>
+    <p class="dim">If the button doesn't open the app, enter the code from the email in Tusky
+    instead, or request a new reset from the sign-in screen in the app.</p>
+  </div>
+
+  <div id="failed">
+    <img class="logo" src="/tusky/logo.png" alt="" width="72" height="72">
+    <h1>This link didn't work</h1>
+    <p class="meta">Tusky, by <a href="https://studiosouroboros.com/">Ouroboros Studios</a></p>
+    <p>The reset link is incomplete, has expired, or was already used.</p>
+    <p>Enter the code from the email in the Tusky app, or request a new password reset from the
+    sign-in screen in the app.</p>
+  </div>
+
+  <footer><a href="/tusky/">Tusky</a> · <a href="/tusky/support">Support</a> ·
+    <a href="mailto:ouroboros2043@gmail.com">Contact</a></footer>
+</main>
+<script>
+  (function () {
+    // Read the params from the query string (Supabase's format). Values are never
+    // written into the page as HTML; the token is checked against a strict
+    // character allowlist and re-encoded into the app link.
+    var q = new URLSearchParams(location.search);
+    var token = q.get('token_hash') || '';
+    var type = q.get('type') || 'recovery';
+    // Supabase email OTP types. Anything else is refused rather than passed on.
+    var TYPES = ['recovery', 'signup', 'invite', 'magiclink', 'email_change', 'email'];
+    var failed = /[#?&]error(_code)?=/.test(location.hash + location.search);
+    if (failed || !/^[A-Za-z0-9_-]{8,512}$/.test(token) || TYPES.indexOf(type) < 0) return;
+
+    document.getElementById('open').href = 'tusky://reset-password?token_hash=' +
+      encodeURIComponent(token) + '&type=' + encodeURIComponent(type);
+    document.getElementById('failed').hidden = true;
+    document.getElementById('ok').hidden = false;
+  })();
+</script>
+</body>
+</html>

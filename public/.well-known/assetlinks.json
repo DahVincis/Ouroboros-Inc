@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ouroborosstudios.tusky",
+      "sha256_cert_fingerprints": [
+        "E1:17:6F:E7:CA:9E:DF:BE:AF:81:99:29:20:69:B9:ED:3D:77:43:4B:54:0A:B8:09:B3:62:DD:56:F9:65:83:D3",
+        "B2:22:55:78:66:36:AF:F6:11:A1:16:B9:45:54:7B:E3:D2:58:8F:A9:78:E8:3B:17:49:98:6E:46:9F:4E:9F:2E"
+      ]
+    }
+  }
+]
