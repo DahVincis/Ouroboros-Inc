@@ -3,3 +3,12 @@
 # with no redirect on this exact path.
 /.well-known/apple-app-site-association
   Content-Type: application/json
+
+# Android App Links: Google requires application/json, a 200 and no redirect.
+/.well-known/assetlinks.json
+  Content-Type: application/json
+
+# Reset page: its address carries a one-time token. Keep it out of caches and Referers.
+/tusky/reset
+  Cache-Control: no-store
+  Referrer-Policy: no-referrer
